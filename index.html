@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julimboo.store | Black Friday · 27 al 30 de Noviembre — Tecnología que te conecta</title>
+  <meta name="description" content="Black Friday en Julimboo.store del 27 al 30 de noviembre. iPhone Nuevos Sellados, Nuevo iPhone 18, iPhone Dúo plegable y Open Box con Baterías 100%. Incluye cargador, forro y vidrio templado." />
+  <meta name="theme-color" content="#050507" />
+
+  <!-- Tipografías modernas: Inter + Syne / Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Swiper.js CSS para transiciones suaves en carrusel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- ==========================================================================
+       ARQUITECTURA DE WEB SEMÁNTICA (Schema.org / JSON-LD)
+       Implementa 10 @type interconectados (superando el mínimo de 7 @type):
+       1. Store              6. Offer
+       2. SaleEvent          7. ImageObject
+       3. OfferCatalog       8. ItemList
+       4. Product            9. ListItem
+       5. Brand             10. ContactPoint (+ WarrantyPromise)
+       ========================================================================== -->
+  <script type="application/ld+json" id="julimboo-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": "https://julimboo.store/#store",
+    "name": "Julimboo.store",
+    "alternateName": "@julimboo.store",
+    "slogan": "Tecnología que te conecta",
+    "description": "Tienda especializada en dispositivos Apple iPhone nuevos sellados, línea de lanzamiento iPhone 18, iPhone Dúo plegable y equipos Open Box seleccionados con baterías al 100%.",
+    "url": "https://julimboo.store/",
+    "sameAs": [
+      "https://www.instagram.com/julimboo.store/"
+    ],
+    "currenciesAccepted": "COP",
+    "priceRange": "$2.000.000 - $9.050.000 COP",
+    "image": {
+      "@type": "ImageObject",
+      "@id": "https://julimboo.store/#hero-image",
+      "url": "https://julimboo.store/Source/imgs/nuevos_sellados.webp",
+      "contentUrl": "https://julimboo.store/Source/imgs/nuevos_sellados.webp",
+      "caption": "Catálogo Black Friday Julimboo.store - Tecnología que te conecta",
+      "representativeOfPage": true
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "@id": "https://julimboo.store/#contact",
+      "contactType": "sales",
+      "name": "Atención Comercial @julimboo.store",
+      "url": "https://www.instagram.com/julimboo.store/",
+      "availableLanguage": ["es"]
+    },
+    "event": {
+      "@type": "SaleEvent",
+      "@id": "https://julimboo.store/#black-friday-2026",
+      "name": "Black Friday Julimboo.store · 27 al 30 de noviembre",
+      "description": "Campaña oficial Black Friday en Julimboo.store con precios especiales en iPhone Nuevos Sellados, Nuevo iPhone 18, iPhone Dúo y Open Box (Baterías 100%), incluyendo cargador, forro y vidrio templado.",
+      "startDate": "2026-11-27T00:00:00-05:00",
+      "endDate": "2026-11-30T23:59:59-05:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "organizer": {
+        "@id": "https://julimboo.store/#store"
+      },
+      "location": {
+        "@id": "https://julimboo.store/#store"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://julimboo.store/Source/imgs/nuevo_iphone_18.webp",
+        "caption": "Black Friday 27 al 30 de noviembre en Julimboo.store"
+      }
+    },
+    "subjectOf": {
+      "@type": "ItemList",
+      "@id": "https://julimboo.store/#included-benefits",
+      "name": "Accesorios y beneficios incluidos en compras Black Friday",
+      "description": "Por tu compra en Black Friday recibes sin costo adicional los 3 accesorios esenciales de protección y energía.",
+      "numberOfItems": 3,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Cargador",
+          "description": "Cargador de carga rápida incluido con el equipo.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://julimboo.store/Source/imgs/logo_cargador.webp",
+            "caption": "Icono de cargador incluido"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Forro protector",
+          "description": "Forro con soporte MagSafe incluido para protección inmediata.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://julimboo.store/Source/imgs/logo_forro.webp",
+            "caption": "Icono de forro protector incluido"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Vidrio templado",
+          "description": "Vidrio templado protector de pantalla de alta resistencia.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://julimboo.store/Source/imgs/logo_vidrio.webp",
+            "caption": "Icono de vidrio templado incluido"
+          }
+        }
+      ]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "@id": "https://julimboo.store/#master-catalog",
+      "name": "Catálogo General Black Friday Julimboo.store",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://julimboo.store/#catalog-nuevos-sellados",
+          "name": "iPhone Nuevos, Sellados",
+          "description": "Equipos 100% nuevos y sellados de fábrica con 1 año de garantía.",
+          "itemListElement": [
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-15-128-new",
+              "name": "iPhone 15 128GB (Nuevo, Sellado)",
+              "sku": "JLB-NEW-IP15-128",
+              "category": "iPhone Nuevos, Sellados",
+              "description": "iPhone 15 de 128GB nuevo, sellado. Incluye 1 año de garantía, cargador, forro y vidrio templado. Precio anterior: $2.600.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevos_sellados.webp",
+                "caption": "iPhone 15 128GB Nuevo Sellado"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2500000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" },
+                "warranty": {
+                  "@type": "WarrantyPromise",
+                  "durationOfWarranty": { "@type": "QuantitativeValue", "value": 12, "unitCode": "MON" }
+                }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-16-128-new",
+              "name": "iPhone 16 128GB (Nuevo, Sellado)",
+              "sku": "JLB-NEW-IP16-128",
+              "category": "iPhone Nuevos, Sellados",
+              "description": "iPhone 16 de 128GB nuevo, sellado. Incluye 1 año de garantía, cargador, forro y vidrio templado. Precio anterior: $2.900.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevos_sellados.webp",
+                "caption": "iPhone 16 128GB Nuevo Sellado"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2800000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-17-256-new",
+              "name": "iPhone 17 256GB (Nuevo, Sellado · Best Seller)",
+              "sku": "JLB-NEW-IP17-256",
+              "category": "iPhone Nuevos, Sellados",
+              "description": "Best Seller Black Friday: iPhone 17 de 256GB nuevo, sellado con 1 año de garantía. Precio anterior: $3.450.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 256GB Best Seller en Julimboo.store"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 3350000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-17-pro-256-new",
+              "name": "iPhone 17 Pro 256GB (Nuevo, Sellado)",
+              "sku": "JLB-NEW-IP17PRO-256",
+              "category": "iPhone Nuevos, Sellados",
+              "description": "iPhone 17 Pro de 256GB nuevo, sellado con 1 año de garantía. Precio anterior: $4.250.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 Pro 256GB Nuevo Sellado"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 4150000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-17-promax-256-new",
+              "name": "iPhone 17 Pro Max 256GB (Nuevo, Sellado)",
+              "sku": "JLB-NEW-IP17PM-256",
+              "category": "iPhone Nuevos, Sellados",
+              "description": "iPhone 17 Pro Max de 256GB nuevo, sellado con 1 año de garantía. Precio anterior: $4.399.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 Pro Max 256GB Nuevo Sellado"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 4299000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://julimboo.store/#catalog-iphone-18",
+          "name": "Nuevo iPhone 18",
+          "description": "Línea de lanzamiento iPhone 18 Pro y iPhone 18 Pro Max en 256GB y 512GB con 1 año de garantía.",
+          "itemListElement": [
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-18-pro-256",
+              "name": "iPhone 18 Pro 256GB",
+              "sku": "JLB-IP18PRO-256",
+              "category": "Nuevo iPhone 18",
+              "description": "Nuevo iPhone 18 Pro de 256GB con 1 año de garantía. Precio anterior: $4.600.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevo_iphone_18.webp",
+                "caption": "Nuevo iPhone 18 Pro 256GB"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 4500000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-18-promax-256",
+              "name": "iPhone 18 Pro Max 256GB",
+              "sku": "JLB-IP18PM-256",
+              "category": "Nuevo iPhone 18",
+              "description": "Nuevo iPhone 18 Pro Max de 256GB con 1 año de garantía. Precio anterior: $5.100.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevo_iphone_18.webp",
+                "caption": "Nuevo iPhone 18 Pro Max 256GB"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 5000000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-18-pro-512",
+              "name": "iPhone 18 Pro 512GB",
+              "sku": "JLB-IP18PRO-512",
+              "category": "Nuevo iPhone 18",
+              "description": "Nuevo iPhone 18 Pro de 512GB con 1 año de garantía. Precio anterior: $5.360.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevo_iphone_18.webp",
+                "caption": "Nuevo iPhone 18 Pro 512GB"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 5260000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-18-promax-512",
+              "name": "iPhone 18 Pro Max 512GB",
+              "sku": "JLB-IP18PM-512",
+              "category": "Nuevo iPhone 18",
+              "description": "Nuevo iPhone 18 Pro Max de 512GB con 1 año de garantía. Precio anterior: $6.000.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/nuevo_iphone_18.webp",
+                "caption": "Nuevo iPhone 18 Pro Max 512GB"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 5900000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://julimboo.store/#catalog-duo",
+          "name": "Línea Dúo",
+          "description": "Equipo plegable iPhone Dúo en capacidades de 256GB y 512GB con 1 año de garantía.",
+          "itemListElement": [
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-duo-256",
+              "name": "iPhone Dúo 256GB (Plegable)",
+              "sku": "JLB-DUO-256",
+              "category": "Línea Dúo",
+              "description": "iPhone Dúo plegable de 256GB con 1 año de garantía. Precio anterior: $8.500.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_duo.webp",
+                "caption": "iPhone Dúo 256GB formato plegable"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 8400000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-iphone-duo-512",
+              "name": "iPhone Dúo 512GB (Plegable)",
+              "sku": "JLB-DUO-512",
+              "category": "Línea Dúo",
+              "description": "iPhone Dúo plegable de 512GB con 1 año de garantía. Precio anterior: $9.150.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_duo.webp",
+                "caption": "iPhone Dúo 512GB formato plegable"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 9050000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://julimboo.store/#catalog-open-box",
+          "name": "Open Box (Baterías 100%)",
+          "description": "Catálogo de equipos Open Box verificados con condición de batería al 100% y 6 meses de garantía.",
+          "itemListElement": [
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-14-pro-256",
+              "name": "iPhone 14 Pro 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP14PRO-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 14 Pro 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.100.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 14 Pro 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2000000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-14-promax-256",
+              "name": "iPhone 14 Pro Max 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP14PM-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 14 Pro Max 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.400.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 14 Pro Max 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2300000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-15-pro-256",
+              "name": "iPhone 15 Pro 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP15PRO-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 15 Pro 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.600.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 15 Pro 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2500000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-15-promax-256",
+              "name": "iPhone 15 Pro Max 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP15PM-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 15 Pro Max 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.800.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 15 Pro Max 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2700000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-16-pro-256",
+              "name": "iPhone 16 Pro 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP16PRO-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 16 Pro 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.900.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 16 Pro 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2800000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-16-promax-256",
+              "name": "iPhone 16 Pro Max 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP16PM-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 16 Pro Max 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $3.100.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_15.webp",
+                "caption": "iPhone 16 Pro Max 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 3000000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-17-256",
+              "name": "iPhone 17 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP17-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 17 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $2.900.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 2800000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-17-pro-256",
+              "name": "iPhone 17 Pro 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP17PRO-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 17 Pro 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $3.750.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 Pro 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 3650000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            },
+            {
+              "@type": "Product",
+              "@id": "https://julimboo.store/#product-ob-iphone-17-promax-256",
+              "name": "iPhone 17 Pro Max 256GB (Open Box · Batería 100%)",
+              "sku": "JLB-OB-IP17PM-256",
+              "category": "Open Box (Baterías 100%)",
+              "description": "iPhone 17 Pro Max 256GB Open Box con batería al 100% y 6 meses de garantía. Precio anterior: $4.000.000 COP.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://julimboo.store/Source/imgs/iphone_17.webp",
+                "caption": "iPhone 17 Pro Max 256GB Open Box Batería 100%"
+              },
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": {
+                "@type": "Offer",
+                "price": 3900000,
+                "priceCurrency": "COP",
+                "priceValidUntil": "2026-11-30",
+                "itemCondition": "https://schema.org/RefurbishedCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@id": "https://julimboo.store/#store" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- ========================================================================
+       ACTO 0 · NAVEGACIÓN Y PROGRESO GLOBAL VINCULADO AL SCROLL
+       ======================================================================== -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Julimboo.store Inicio">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-name">Julimboo<span class="brand-accent">.store</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Categorías del catálogo Black Friday">
+        <ul class="nav-list">
+          <li><a href="#nuevos-sellados" class="nav-link" data-section="nuevos-sellados">Nuevos Sellados</a></li>
+          <li><a href="#iphone-18" class="nav-link" data-section="iphone-18">Nuevo iPhone 18</a></li>
+          <li><a href="#linea-duo" class="nav-link" data-section="linea-duo">Línea Dúo</a></li>
+          <li><a href="#open-box" class="nav-link" data-section="open-box">Open Box 100%</a></li>
+          <li><a href="#beneficios" class="nav-link" data-section="beneficios">Regalos</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="semantic-badge-btn" id="openSemanticModal" aria-haspopup="dialog" aria-controls="semanticModal" title="Explorar grafo JSON-LD de Web Semántica">
+          <span class="code-icon" aria-hidden="true">{ }</span>
+          <span>10 <code>@type</code> Schema</span>
+        </button>
+        <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="nav-cta magnetic-btn">
+          <span>@julimboo.store</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ======================================================================
+         ACTO 1 · APERTURA Y PROMESA (HERO BLACK FRIDAY)
+         Máscara clip-path tipo cortina en titular y showcase + paralaje scroll
+         ====================================================================== -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-event-pill reveal-up">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span class="event-tag">EVENTO OFICIAL</span>
+            <span class="event-divider" aria-hidden="true">·</span>
+            <time datetime="2026-11-27">27</time>–<time datetime="2026-11-30">30 de noviembre</time>
+          </div>
+
+          <h1 id="hero-title" class="hero-title">
+            <span class="mask-curtain-wrap">
+              <span class="mask-curtain-inner">BLACK</span>
+            </span>
+            <span class="mask-curtain-wrap delay-1">
+              <span class="mask-curtain-inner text-gradient-crimson">FRIDAY</span>
+            </span>
+          </h1>
+
+          <p class="hero-slogan reveal-up delay-2">
+            «Tecnología que te conecta» — Desgranamos todo el catálogo oficial de <strong>Julimboo.store</strong> en una experiencia interactiva con precios exclusivos de temporada.
+          </p>
+
+          <div class="hero-perks-strip reveal-up delay-3" aria-label="Beneficios destacados">
+            <div class="perk-chip">
+              <span class="perk-icon" aria-hidden="true">✦</span>
+              <span><strong>20 Referencias</strong> en oferta</span>
+            </div>
+            <div class="perk-chip">
+              <span class="perk-icon" aria-hidden="true">⚡</span>
+              <span><strong>3 Accesorios</strong> incluidos</span>
+            </div>
+            <div class="perk-chip">
+              <span class="perk-icon" aria-hidden="true">🛡</span>
+              <span>Garantía hasta <strong>1 año</strong></span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group reveal-up delay-3">
+            <a href="#nuevos-sellados" class="btn-primary magnetic-btn">
+              <span>Explorar Catálogo</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            </a>
+            <a href="#iphone-18" class="btn-secondary magnetic-btn">
+              <span>Ver Nuevo iPhone 18</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual-stage">
+          <div class="hero-floating-badge badge-top-left" aria-hidden="true">
+            <span class="badge-kicker">Lanzamiento</span>
+            <strong>iPhone 18 Pro Max</strong>
+          </div>
+          <div class="hero-floating-badge badge-bottom-right" aria-hidden="true">
+            <span class="badge-kicker">Best Seller</span>
+            <strong>iPhone 17 · 256GB</strong>
+          </div>
+
+          <figure class="hero-device-frame mask-hero-reveal" id="heroMaskFrame">
+            <picture>
+              <source srcset="./Source/imgs/nuevo_iphone_18.webp" type="image/webp" />
+              <img
+                src="./Source/imgs/nuevo_iphone_18.jpg"
+                alt="Nuevo iPhone 18 en acabado rojo titanio para Black Friday de Julimboo.store"
+                class="hero-device-img"
+                width="720"
+                height="960"
+                fetchpriority="high"
+              />
+            </picture>
+            <figcaption class="sr-only">Acabado especial Black Friday en Julimboo.store</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Cinta resumen rápida de las 4 líneas -->
+      <div class="container">
+        <div class="quick-lines-bar" role="region" aria-label="Resumen de líneas disponibles">
+          <a href="#nuevos-sellados" class="quick-line-item spotlight-card">
+            <span class="ql-index">01</span>
+            <div>
+              <strong>Nuevos, Sellados</strong>
+              <span>5 modelos · Desde $2.500.000</span>
+            </div>
+          </a>
+          <a href="#iphone-18" class="quick-line-item spotlight-card">
+            <span class="ql-index">02</span>
+            <div>
+              <strong>Nuevo iPhone 18</strong>
+              <span>Pro &amp; Pro Max · 256GB / 512GB</span>
+            </div>
+          </a>
+          <a href="#linea-duo" class="quick-line-item spotlight-card">
+            <span class="ql-index">03</span>
+            <div>
+              <strong>Línea Dúo Plegable</strong>
+              <span>256GB &amp; 512GB · 1 año garantía</span>
+            </div>
+          </a>
+          <a href="#open-box" class="quick-line-item spotlight-card">
+            <span class="ql-index">04</span>
+            <div>
+              <strong>Open Box · Batería 100%</strong>
+              <span>9 modelos · Desde $2.000.000</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTO 2 · iPHONE NUEVOS, SELLADOS (SCROLLYTELLING CON POSITION: STICKY)
+         Columna izquierda fija con máscara clip-path progresiva + Columna derecha
+         con las 5 referencias y hover spotlight
+         ====================================================================== -->
+    <section class="catalog-section sticky-scrolly-section" id="nuevos-sellados" aria-labelledby="title-nuevos-sellados">
+      <div class="container sticky-split-grid">
+        <!-- Panel Fijo (Scroll-Pinning) -->
+        <aside class="sticky-showcase-panel" aria-label="Vitrina iPhone Nuevos Sellados">
+          <div class="sticky-panel-inner">
+            <div class="section-eyebrow">
+              <span class="eyebrow-num">ACTO 02</span>
+              <span class="eyebrow-sep">·</span>
+              <span>CATÁLOGO SELLADO DE FÁBRICA</span>
+            </div>
+
+            <h2 id="title-nuevos-sellados" class="section-title mask-title-reveal">
+              iPhone Nuevos, <span class="text-gradient-silver">Sellados</span>
+            </h2>
+
+            <p class="section-lead">
+              Equipos completamente nuevos en caja sellada. Pasa el cursor o haz <em>scroll</em> por cada referencia para inspeccionar la línea.
+            </p>
+
+            <div class="warranty-pill-group">
+              <span class="warranty-seal">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                1 Año de Garantía
+              </span>
+              <span class="warranty-seal seal-subtle">Caja Sellada + 3 Regalos</span>
+            </div>
+
+            <!-- Imagen con máscara clip-path vinculada al scroll + cambio interactivo -->
+            <figure class="sticky-visual-box scroll-mask-inset" data-mask-target="nuevos">
+              <picture id="nuevosPreviewPicture">
+                <source id="nuevosPreviewSource" srcset="./Source/imgs/nuevos_sellados.webp" type="image/webp" />
+                <img
+                  id="nuevosPreviewImg"
+                  src="./Source/imgs/nuevos_sellados.jpg"
+                  alt="Familia de iPhone Nuevos Sellados en Julimboo.store"
+                  loading="lazy"
+                  width="640"
+                  height="800"
+                />
+              </picture>
+              <figcaption class="sticky-visual-caption">
+                <span class="caption-tag" id="nuevosActiveTag">Vista General · 5 Referencias</span>
+                <strong id="nuevosActivePrice">Desde $2.500.000 COP</strong>
+              </figcaption>
+            </figure>
+          </div>
+        </aside>
+
+        <!-- Columna de desfile de tarjetas (5 referencias) -->
+        <div class="scrolly-cards-column" role="list" aria-label="Lista de iPhone Nuevos Sellados">
+          <!-- 1. iPhone 15 128GB -->
+          <article
+            class="product-card spotlight-card"
+            role="listitem"
+            tabindex="0"
+            data-preview-webp="./Source/imgs/nuevos_sellados.webp"
+            data-preview-jpg="./Source/imgs/nuevos_sellados.jpg"
+            data-preview-label="iPhone 15 · 128GB (Nuevo, Sellado)"
+            data-preview-price="$2.500.000 COP"
+          >
+            <div class="card-top-meta">
+              <span class="condition-badge">Nuevo · Sellado</span>
+              <span class="savings-pill">Ahorras $100.000</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 15</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">128GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>1 año de garantía</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price" aria-label="Precio anterior">$2.600.000</del>
+                <ins class="bf-price" aria-label="Precio Black Friday">$2.500.000</ins>
+                <span class="currency-label">COP · Precio Black Friday</span>
+              </div>
+            </div>
+            <div class="card-hover-footer">
+              <span>Incluye cargador, forro y vidrio templado</span>
+              <span class="card-cta-text">Reservar en @julimboo.store →</span>
+            </div>
+          </article>
+
+          <!-- 2. iPhone 16 128GB -->
+          <article
+            class="product-card spotlight-card"
+            role="listitem"
+            tabindex="0"
+            data-preview-webp="./Source/imgs/nuevos_sellados.webp"
+            data-preview-jpg="./Source/imgs/nuevos_sellados.jpg"
+            data-preview-label="iPhone 16 · 128GB (Nuevo, Sellado)"
+            data-preview-price="$2.800.000 COP"
+          >
+            <div class="card-top-meta">
+              <span class="condition-badge">Nuevo · Sellado</span>
+              <span class="savings-pill">Ahorras $100.000</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 16</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">128GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>1 año de garantía</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price" aria-label="Precio anterior">$2.900.000</del>
+                <ins class="bf-price" aria-label="Precio Black Friday">$2.800.000</ins>
+                <span class="currency-label">COP · Precio Black Friday</span>
+              </div>
+            </div>
+            <div class="card-hover-footer">
+              <span>Incluye cargador, forro y vidrio templado</span>
+              <span class="card-cta-text">Reservar en @julimboo.store →</span>
+            </div>
+          </article>
+
+          <!-- 3. iPhone 17 256GB (BEST SELLER) -->
+          <article
+            class="product-card spotlight-card card-bestseller"
+            role="listitem"
+            tabindex="0"
+            data-preview-webp="./Source/imgs/iphone_17.webp"
+            data-preview-jpg="./Source/imgs/iphone_17_.jpg"
+            data-preview-label="★ BEST SELLER · iPhone 17 · 256GB"
+            data-preview-price="$3.350.000 COP"
+          >
+            <div class="bestseller-ribbon" aria-label="Producto más vendido">
+              <span>★ BEST SELLER BLACK FRIDAY</span>
+            </div>
+            <div class="card-top-meta">
+              <span class="condition-badge badge-crimson">Nuevo · Sellado · Destacado</span>
+              <span class="savings-pill">Ahorras $100.000</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip chip-highlight">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>1 año de garantía</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price" aria-label="Precio anterior">$3.450.000</del>
+                <ins class="bf-price price-glow" aria-label="Precio Black Friday">$3.350.000</ins>
+                <span class="currency-label">COP · El favorito de la temporada</span>
+              </div>
+            </div>
+            <div class="card-hover-footer">
+              <span>Incluye cargador, forro y vidrio templado</span>
+              <span class="card-cta-text">Reservar Best Seller →</span>
+            </div>
+          </article>
+
+          <!-- 4. iPhone 17 Pro 256GB -->
+          <article
+            class="product-card spotlight-card"
+            role="listitem"
+            tabindex="0"
+            data-preview-webp="./Source/imgs/iphone_17.webp"
+            data-preview-jpg="./Source/imgs/iphone_17_.jpg"
+            data-preview-label="iPhone 17 Pro · 256GB (Nuevo, Sellado)"
+            data-preview-price="$4.150.000 COP"
+          >
+            <div class="card-top-meta">
+              <span class="condition-badge">Nuevo · Sellado</span>
+              <span class="savings-pill">Ahorras $100.000</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17 Pro</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>1 año de garantía</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price" aria-label="Precio anterior">$4.250.000</del>
+                <ins class="bf-price" aria-label="Precio Black Friday">$4.150.000</ins>
+                <span class="currency-label">COP · Precio Black Friday</span>
+              </div>
+            </div>
+            <div class="card-hover-footer">
+              <span>Incluye cargador, forro y vidrio templado</span>
+              <span class="card-cta-text">Reservar en @julimboo.store →</span>
+            </div>
+          </article>
+
+          <!-- 5. iPhone 17 Pro Max 256GB -->
+          <article
+            class="product-card spotlight-card"
+            role="listitem"
+            tabindex="0"
+            data-preview-webp="./Source/imgs/iphone_17.webp"
+            data-preview-jpg="./Source/imgs/iphone_17_.jpg"
+            data-preview-label="iPhone 17 Pro Max · 256GB (Nuevo, Sellado)"
+            data-preview-price="$4.299.000 COP"
+          >
+            <div class="card-top-meta">
+              <span class="condition-badge">Nuevo · Sellado · Tope de línea 17</span>
+              <span class="savings-pill">Ahorras $100.000</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17 Pro Max</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>1 año de garantía</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price" aria-label="Precio anterior">$4.399.000</del>
+                <ins class="bf-price" aria-label="Precio Black Friday">$4.299.000</ins>
+                <span class="currency-label">COP · Precio Black Friday</span>
+              </div>
+            </div>
+            <div class="card-hover-footer">
+              <span>Incluye cargador, forro y vidrio templado</span>
+              <span class="card-cta-text">Reservar en @julimboo.store →</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTO 3 · NUEVO iPHONE 18 (LANZAMIENTO + MÁSCARA CIRCULAR + SWIPER.JS)
+         Revelado circular/diagonal dinámico + Carrusel interactivo y filtro
+         ====================================================================== -->
+    <section class="catalog-section launch-section" id="iphone-18" aria-labelledby="title-iphone-18">
+      <div class="launch-ambient-Crimson" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header-centered">
+          <div class="section-eyebrow">
+            <span class="eyebrow-num">ACTO 03</span>
+            <span class="eyebrow-sep">·</span>
+            <span>SERIE DE LANZAMIENTO</span>
+          </div>
+          <h2 id="title-iphone-18" class="section-title-xl mask-title-reveal">
+            Nuevo <span class="text-gradient-crimson">iPhone 18</span>
+          </h2>
+          <p class="section-lead-centered">
+            Potencia sin precedentes en versiones <strong>iPhone 18 Pro</strong> y <strong>iPhone 18 Pro Max</strong> (256GB y 512GB) con <strong>1 año de garantía</strong> y kit completo de regalo.
+          </p>
+        </div>
+
+        <div class="iphone18-showcase-grid">
+          <!-- Escenario visual con máscara clip-path circular controlada por scroll -->
+          <div class="iphone18-visual-col">
+            <figure class="circle-mask-stage" id="iphone18MaskStage">
+              <picture>
+                <source srcset="./Source/imgs/nuevo_iphone_18.webp" type="image/webp" />
+                <img
+                  src="./Source/imgs/nuevo_iphone_18.jpg"
+                  alt="Nuevo iPhone 18 Pro y iPhone 18 Pro Max en acabado rojo profundo"
+                  loading="lazy"
+                  width="680"
+                  height="880"
+                />
+              </picture>
+              <figcaption class="stage-floating-caption">
+                <span class="status-dot"></span>
+                <span>Máscara dinámica activa · 1 Año de Garantía Oficial</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Columna de Carrusel Swiper.js + Selector de Capacidades -->
+          <div class="iphone18-carousel-col">
+            <div class="capacity-filter-bar" role="tablist" aria-label="Filtrar Nuevo iPhone 18 por capacidad">
+              <button type="button" class="capacity-tab active" data-ip18-filter="all" role="tab" aria-selected="true">
+                Todas las versiones (4)
+              </button>
+              <button type="button" class="capacity-tab" data-ip18-filter="256GB" role="tab" aria-selected="false">
+                256GB (2)
+              </button>
+              <button type="button" class="capacity-tab" data-ip18-filter="512GB" role="tab" aria-selected="false">
+                512GB (2)
+              </button>
+            </div>
+
+            <!-- Carrusel Swiper.js con transiciones suaves -->
+            <div class="swiper iphone18-swiper" id="iphone18Swiper" aria-label="Carrusel de versiones del Nuevo iPhone 18">
+              <div class="swiper-wrapper">
+                <!-- Slide 1: iPhone 18 Pro 256GB -->
+                <div class="swiper-slide" data-capacity="256GB">
+                  <article class="launch-card spotlight-card">
+                    <div class="launch-card-header">
+                      <span class="launch-tag">Lanzamiento · 256GB</span>
+                      <span class="warranty-mini">1 Año Garantía</span>
+                    </div>
+                    <h3 class="launch-model-title">iPhone 18 Pro</h3>
+                    <p class="launch-model-sub">Capacidad de <strong>256GB</strong> · Nuevo Sellado</p>
+                    <div class="launch-price-box">
+                      <div class="price-row-old">
+                        <span>Antes:</span>
+                        <del>$4.600.000</del>
+                      </div>
+                      <div class="price-row-new">
+                        <ins>$4.500.000</ins>
+                        <span class="cop-badge">COP</span>
+                      </div>
+                      <span class="save-note">Ahorro Black Friday: $100.000 COP</span>
+                    </div>
+                    <ul class="launch-features-list">
+                      <li>✓ 1 año de garantía directa</li>
+                      <li>✓ Incluye cargador, forro y vidrio templado</li>
+                    </ul>
+                    <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="launch-card-btn magnetic-btn">
+                      Solicitar iPhone 18 Pro 256GB
+                    </a>
+                  </article>
+                </div>
+
+                <!-- Slide 2: iPhone 18 Pro Max 256GB -->
+                <div class="swiper-slide" data-capacity="256GB">
+                  <article class="launch-card spotlight-card launch-card-featured">
+                    <div class="launch-card-header">
+                      <span class="launch-tag tag-hot">Pro Max · 256GB</span>
+                      <span class="warranty-mini">1 Año Garantía</span>
+                    </div>
+                    <h3 class="launch-model-title">iPhone 18 Pro Max</h3>
+                    <p class="launch-model-sub">Capacidad de <strong>256GB</strong> · Pantalla Max</p>
+                    <div class="launch-price-box">
+                      <div class="price-row-old">
+                        <span>Antes:</span>
+                        <del>$5.100.000</del>
+                      </div>
+                      <div class="price-row-new">
+                        <ins>$5.000.000</ins>
+                        <span class="cop-badge">COP</span>
+                      </div>
+                      <span class="save-note">Ahorro Black Friday: $100.000 COP</span>
+                    </div>
+                    <ul class="launch-features-list">
+                      <li>✓ 1 año de garantía directa</li>
+                      <li>✓ Incluye cargador, forro y vidrio templado</li>
+                    </ul>
+                    <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="launch-card-btn magnetic-btn">
+                      Solicitar iPhone 18 Pro Max 256GB
+                    </a>
+                  </article>
+                </div>
+
+                <!-- Slide 3: iPhone 18 Pro 512GB -->
+                <div class="swiper-slide" data-capacity="512GB">
+                  <article class="launch-card spotlight-card">
+                    <div class="launch-card-header">
+                      <span class="launch-tag">Alta Capacidad · 512GB</span>
+                      <span class="warranty-mini">1 Año Garantía</span>
+                    </div>
+                    <h3 class="launch-model-title">iPhone 18 Pro</h3>
+                    <p class="launch-model-sub">Capacidad de <strong>512GB</strong> · Almacenamiento Pro</p>
+                    <div class="launch-price-box">
+                      <div class="price-row-old">
+                        <span>Antes:</span>
+                        <del>$5.360.000</del>
+                      </div>
+                      <div class="price-row-new">
+                        <ins>$5.260.000</ins>
+                        <span class="cop-badge">COP</span>
+                      </div>
+                      <span class="save-note">Ahorro Black Friday: $100.000 COP</span>
+                    </div>
+                    <ul class="launch-features-list">
+                      <li>✓ 1 año de garantía directa</li>
+                      <li>✓ Incluye cargador, forro y vidrio templado</li>
+                    </ul>
+                    <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="launch-card-btn magnetic-btn">
+                      Solicitar iPhone 18 Pro 512GB
+                    </a>
+                  </article>
+                </div>
+
+                <!-- Slide 4: iPhone 18 Pro Max 512GB -->
+                <div class="swiper-slide" data-capacity="512GB">
+                  <article class="launch-card spotlight-card launch-card-featured">
+                    <div class="launch-card-header">
+                      <span class="launch-tag tag-hot">Flagship · 512GB</span>
+                      <span class="warranty-mini">1 Año Garantía</span>
+                    </div>
+                    <h3 class="launch-model-title">iPhone 18 Pro Max</h3>
+                    <p class="launch-model-sub">Capacidad de <strong>512GB</strong> · Máximo Rendimiento</p>
+                    <div class="launch-price-box">
+                      <div class="price-row-old">
+                        <span>Antes:</span>
+                        <del>$6.000.000</del>
+                      </div>
+                      <div class="price-row-new">
+                        <ins>$5.900.000</ins>
+                        <span class="cop-badge">COP</span>
+                      </div>
+                      <span class="save-note">Ahorro Black Friday: $100.000 COP</span>
+                    </div>
+                    <ul class="launch-features-list">
+                      <li>✓ 1 año de garantía directa</li>
+                      <li>✓ Incluye cargador, forro y vidrio templado</li>
+                    </ul>
+                    <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="launch-card-btn magnetic-btn">
+                      Solicitar iPhone 18 Pro Max 512GB
+                    </a>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Controles de navegación Swiper -->
+              <div class="swiper-controls-row">
+                <div class="swiper-pagination" id="iphone18Pagination"></div>
+                <div class="swiper-nav-buttons">
+                  <button type="button" class="swiper-btn-prev" id="iphone18Prev" aria-label="Versión anterior">
+                    ←
+                  </button>
+                  <button type="button" class="swiper-btn-next" id="iphone18Next" aria-label="Siguiente versión">
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTO 4 · LÍNEA DÚO (FORMATO PLEGABLE CON MÁSCARA SIMÉTRICA DESDE EL CENTRO)
+         inset(0 50% 0 50%) -> inset(0 0% 0 0%) evocando la apertura plegable
+         ====================================================================== -->
+    <section class="catalog-section duo-section" id="linea-duo" aria-labelledby="title-duo">
+      <div class="container">
+        <div class="section-header-centered">
+          <div class="section-eyebrow">
+            <span class="eyebrow-num">ACTO 04</span>
+            <span class="eyebrow-sep">·</span>
+            <span>INGENIERÍA PLEGABLE</span>
+          </div>
+          <h2 id="title-duo" class="section-title-xl mask-title-reveal">
+            Línea <span class="text-gradient-gold">iPhone Dúo</span>
+          </h2>
+          <p class="section-lead-centered">
+            La pantalla se despliega a medida que avanzas. El formato plegable de nueva generación disponible en <strong>256GB</strong> y <strong>512GB</strong> con <strong>1 año de garantía</strong>.
+          </p>
+        </div>
+
+        <!-- Escenario de apertura horizontal simétrica (clip-path) -->
+        <div class="duo-unfold-experience">
+          <div class="unfold-meter-bar">
+            <span>Apertura de máscara plegable (<code id="duoPercentLabel">100%</code>)</span>
+            <label class="unfold-slider-label">
+              <span>Probar pliegue:</span>
+              <input type="range" id="duoFoldSlider" min="15" max="100" value="100" aria-label="Control manual de apertura de máscara del iPhone Dúo" />
+            </label>
+          </div>
+
+          <figure class="duo-mask-viewport" id="duoMaskStage">
+            <picture>
+              <source srcset="./Source/imgs/iphone_duo.webp" type="image/webp" />
+              <img
+                src="./Source/imgs/iphone_duo.jpg"
+                alt="iPhone Dúo desplegado mostrando su pantalla interior panorámica"
+                loading="lazy"
+                width="900"
+                height="980"
+              />
+            </picture>
+          </figure>
+
+          <!-- Tarjetas laterales de precios iPhone Dúo -->
+          <div class="duo-cards-grid" role="list" aria-label="Modelos de la Línea iPhone Dúo">
+            <!-- iPhone Dúo 256GB -->
+            <article class="duo-price-card spotlight-card slide-in-left" role="listitem" tabindex="0">
+              <div class="duo-card-top">
+                <span class="duo-edition-tag">EDICIÓN PLEGABLE · 256GB</span>
+                <span class="warranty-seal">1 Año de Garantía</span>
+              </div>
+              <h3 class="duo-model-name">iPhone Dúo <span class="duo-cap">256GB</span></h3>
+              <p class="duo-desc">Doble superficie visual ultradelgada, nuevo sellado con accesorios de protección incluidos.</p>
+              <div class="duo-pricing-block">
+                <div>
+                  <span class="price-caption">Precio regular</span>
+                  <del class="old-price">$8.500.000</del>
+                </div>
+                <div class="duo-bf-price-wrap">
+                  <span class="price-caption">Precio Black Friday</span>
+                  <ins class="bf-price-lg">$8.400.000 <small>COP</small></ins>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="btn-duo magnetic-btn">
+                <span>Reservar Dúo 256GB</span>
+                <span>→</span>
+              </a>
+            </article>
+
+            <!-- iPhone Dúo 512GB -->
+            <article class="duo-price-card spotlight-card duo-card-premium slide-in-right" role="listitem" tabindex="0">
+              <div class="duo-card-top">
+                <span class="duo-edition-tag tag-gold">TOPE DE GAMA · 512GB</span>
+                <span class="warranty-seal">1 Año de Garantía</span>
+              </div>
+              <h3 class="duo-model-name">iPhone Dúo <span class="duo-cap">512GB</span></h3>
+              <p class="duo-desc">Máximo almacenamiento en formato plegable con 1 año de garantía y kit Black Friday completo.</p>
+              <div class="duo-pricing-block">
+                <div>
+                  <span class="price-caption">Precio regular</span>
+                  <del class="old-price">$9.150.000</del>
+                </div>
+                <div class="duo-bf-price-wrap">
+                  <span class="price-caption">Precio Black Friday</span>
+                  <ins class="bf-price-lg">$9.050.000 <small>COP</small></ins>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="btn-duo btn-duo-gold magnetic-btn">
+                <span>Reservar Dúo 512GB</span>
+                <span>→</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTO 5 · OPEN BOX · BATERÍAS 100% (SCROLLYTELLING CON STICKY + 9 MODELOS)
+         Cabecera fija con medidor de Batería 100%, 6 meses de garantía y máscara
+         vertical + filtro por generación
+         ====================================================================== -->
+    <section class="catalog-section sticky-scrolly-section openbox-section" id="open-box" aria-labelledby="title-open-box">
+      <div class="container sticky-split-grid">
+        <!-- Columna Fija (Scroll-Pinning) -->
+        <aside class="sticky-showcase-panel" aria-label="Información Open Box Baterías 100%">
+          <div class="sticky-panel-inner">
+            <div class="section-eyebrow">
+              <span class="eyebrow-num">ACTO 05</span>
+              <span class="eyebrow-sep">·</span>
+              <span>SELECCIÓN CERTIFICADA</span>
+            </div>
+
+            <h2 id="title-open-box" class="section-title mask-title-reveal">
+              Open Box · <span class="text-gradient-emerald">Baterías 100%</span>
+            </h2>
+
+            <p class="section-lead">
+              9 referencias de alto rendimiento en condición impecable con <strong>salud de batería al 100%</strong> y <strong>6 meses de garantía</strong>.
+            </p>
+
+            <!-- Indicador visual de Batería 100% y Garantía -->
+            <div class="battery-health-widget">
+              <div class="battery-icon-box" aria-hidden="true">
+                <div class="battery-level-fill"></div>
+                <span class="battery-bolt">⚡ 100%</span>
+              </div>
+              <div class="battery-widget-text">
+                <strong>Capacidad Máxima: 100%</strong>
+                <span>6 Meses de Garantía · 256GB en toda la línea</span>
+              </div>
+            </div>
+
+            <!-- Filtro interactivo por serie -->
+            <div class="openbox-filter-pills" role=" toolbar" aria-label="Filtrar Open Box por generación">
+              <button type="button" class="ob-filter-btn active" data-ob-filter="all">Todos (9)</button>
+              <button type="button" class="ob-filter-btn" data-ob-filter="14">Serie 14 (2)</button>
+              <button type="button" class="ob-filter-btn" data-ob-filter="15">Serie 15 (2)</button>
+              <button type="button" class="ob-filter-btn" data-ob-filter="16">Serie 16 (2)</button>
+              <button type="button" class="ob-filter-btn" data-ob-filter="17">Serie 17 (3)</button>
+            </div>
+
+            <!-- Imagen con revelado vertical clip-path -->
+            <figure class="sticky-visual-box scroll-mask-vertical" data-mask-target="openbox">
+              <picture>
+                <source id="openboxPreviewSource" srcset="./Source/imgs/iphone_15.webp" type="image/webp" />
+                <img
+                  id="openboxPreviewImg"
+                  src="./Source/imgs/iphone_15.jpg"
+                  alt="Equipos iPhone Open Box con Batería al 100% en Julimboo.store"
+                  loading="lazy"
+                  width="640"
+                  height="420"
+                />
+              </picture>
+              <figcaption class="sticky-visual-caption">
+                <span class="caption-tag" id="openboxActiveTag">9 Referencias de 256GB</span>
+                <strong id="openboxActivePrice">Desde $2.000.000 COP</strong>
+              </figcaption>
+            </figure>
+          </div>
+        </aside>
+
+        <!-- Columna de 9 referencias Open Box -->
+        <div class="scrolly-cards-column openbox-cards-grid" id="openboxCardsContainer" role="list" aria-label="Catálogo de 9 equipos Open Box">
+          <!-- 1. iPhone 14 Pro 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="14" data-ob-price="$2.000.000 COP" data-ob-name="iPhone 14 Pro · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 14 Pro</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.100.000</del>
+                <ins class="bf-price">$2.000.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. iPhone 14 Pro Max 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="14" data-ob-price="$2.300.000 COP" data-ob-name="iPhone 14 Pro Max · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 14 Pro Max</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.400.000</del>
+                <ins class="bf-price">$2.300.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. iPhone 15 Pro 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="15" data-ob-price="$2.500.000 COP" data-ob-name="iPhone 15 Pro · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 15 Pro</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.600.000</del>
+                <ins class="bf-price">$2.500.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. iPhone 15 Pro Max 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="15" data-ob-price="$2.700.000 COP" data-ob-name="iPhone 15 Pro Max · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 15 Pro Max</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.800.000</del>
+                <ins class="bf-price">$2.700.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. iPhone 16 Pro 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="16" data-ob-price="$2.800.000 COP" data-ob-name="iPhone 16 Pro · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 16 Pro</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.900.000</del>
+                <ins class="bf-price">$2.800.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. iPhone 16 Pro Max 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="16" data-ob-price="$3.000.000 COP" data-ob-name="iPhone 16 Pro Max · 256GB">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 16 Pro Max</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$3.100.000</del>
+                <ins class="bf-price">$3.000.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. iPhone 17 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="17" data-ob-price="$2.800.000 COP" data-ob-name="iPhone 17 · 256GB (Open Box)">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$2.900.000</del>
+                <ins class="bf-price">$2.800.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. iPhone 17 Pro 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="17" data-ob-price="$3.650.000 COP" data-ob-name="iPhone 17 Pro · 256GB (Open Box)">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17 Pro</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$3.750.000</del>
+                <ins class="bf-price">$3.650.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. iPhone 17 Pro Max 256GB -->
+          <article class="product-card spotlight-card ob-card" role="listitem" tabindex="0" data-series="17" data-ob-price="$3.900.000 COP" data-ob-name="iPhone 17 Pro Max · 256GB (Open Box)">
+            <div class="card-top-meta">
+              <span class="condition-badge badge-emerald">Open Box · Batería 100%</span>
+              <span class="warranty-tag-sm">6 meses garantía</span>
+            </div>
+            <div class="card-main-row">
+              <div class="product-info">
+                <h3 class="product-name">iPhone 17 Pro Max</h3>
+                <div class="product-specs">
+                  <span class="capacity-chip">256GB</span>
+                  <span class="spec-dot">·</span>
+                  <span>Ahorras $100.000</span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <del class="old-price">$4.000.000</del>
+                <ins class="bf-price">$3.900.000</ins>
+                <span class="currency-label">COP · Black Friday</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTO 6 · REGALOS INCLUIDOS Y CIERRE (@JULIMBOO.STORE)
+         Cargador, Forro y Vidrio Templado incluidos + revelado horizontal
+         ====================================================================== -->
+    <section class="benefits-closing-section" id="beneficios" aria-labelledby="title-beneficios">
+      <div class="container">
+        <div class="closing-box">
+          <div class="section-header-centered">
+            <div class="section-eyebrow">
+              <span class="eyebrow-num">ACTO 06</span>
+              <span class="eyebrow-sep">·</span>
+              <span>BENEFICIOS DE CAMPAÑA</span>
+            </div>
+            <h2 id="title-beneficios" class="section-title-xl mask-horizontal-reveal">
+              Todo Incluido con tu <span class="text-gradient-crimson">iPhone</span>
+            </h2>
+            <p class="section-lead-centered">
+              Durante el <strong>Black Friday (27–30 de noviembre)</strong> cada equipo de <strong>Julimboo.store</strong> viene acompañado de los 3 accesorios esenciales sin costo adicional.
+            </p>
+          </div>
+
+          <div class="accessories-grid" role="list" aria-label="Accesorios incluidos gratis">
+            <!-- Accesorio 1: Cargador -->
+            <article class="accessory-card spotlight-card" role="listitem" tabindex="0">
+              <div class="accessory-num">01 · INCLUIDO</div>
+              <figure class="accessory-icon-wrap">
+                <picture>
+                  <source srcset="./Source/imgs/logo_cargador.webp" type="image/webp" />
+                  <img src="./Source/imgs/logo_cargador.jpg" alt="Icono de cargador incluido" loading="lazy" width="140" height="140" />
+                </picture>
+              </figure>
+              <h3 class="accessory-title">Cargador</h3>
+              <p class="accessory-desc">Adaptador y cable de carga rápida listos para conectar tu nuevo iPhone desde el primer minuto.</p>
+            </article>
+
+            <!-- Accesorio 2: Forro -->
+            <article class="accessory-card spotlight-card" role="listitem" tabindex="0">
+              <div class="accessory-num">02 · INCLUIDO</div>
+              <figure class="accessory-icon-wrap">
+                <picture>
+                  <source srcset="./Source/imgs/logo_forro.webp" type="image/webp" />
+                  <img src="./Source/imgs/logo_forro.jpg" alt="Icono de forro MagSafe incluido" loading="lazy" width="140" height="140" />
+                </picture>
+              </figure>
+              <h3 class="accessory-title">Forro Protector</h3>
+              <p class="accessory-desc">Case con anillo magnético compatible con MagSafe que protege chasis y módulo de cámaras.</p>
+            </article>
+
+            <!-- Accesorio 3: Vidrio Templado -->
+            <article class="accessory-card spotlight-card" role="listitem" tabindex="0">
+              <div class="accessory-num">03 · INCLUIDO</div>
+              <figure class="accessory-icon-wrap">
+                <picture>
+                  <source srcset="./Source/imgs/logo_vidrio.webp" type="image/webp" />
+                  <img src="./Source/imgs/logo_vidrio.jpg" alt="Icono de vidrio templado incluido" loading="lazy" width="140" height="140" />
+                </picture>
+              </figure>
+              <h3 class="accessory-title">Vidrio Templado</h3>
+              <p class="accessory-desc">Protección de pantalla de alta transparencia contra rayones e impactos cotidianos.</p>
+            </article>
+          </div>
+
+          <!-- Banner final de cierre hacia @julimboo.store -->
+          <div class="final-cta-banner spotlight-card">
+            <div class="final-cta-content">
+              <span class="final-kicker">BLACK FRIDAY · 27 AL 30 DE NOVIEMBRE</span>
+              <h3 class="final-heading">¿Listo para estrenar tu próximo iPhone?</h3>
+              <p class="final-sub">Atención personalizada, disponibilidad en tiempo real y reserva directa en nuestro canal oficial.</p>
+            </div>
+            <div class="final-cta-actions">
+              <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="btn-primary btn-xl magnetic-btn">
+                <span>Ir a @julimboo.store</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <button type="button" class="btn-secondary" id="openSemanticModalFooter">
+                <span>Inspeccionar JSON-LD (10 @types)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA SEMÁNTICO
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Julimboo<span class="brand-accent">.store</span></strong>
+        <span>«Tecnología que te conecta» · Black Friday 27–30 de noviembre</span>
+      </div>
+      <div class="footer-meta">
+        <span>Arquitectura Híbrida: Lenis + Scroll-Linked CSS + Sticky Pinning + Dynamic Masking + Schema.org JSON-LD</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL / INSPECTOR INTERACTIVO DE WEB SEMÁNTICA (JSON-LD)
+       Permite verificar visualmente los 10 @type y el grafo de entidades
+       ======================================================================== -->
+  <dialog class="semantic-modal" id="semanticModal" aria-labelledby="semanticModalTitle">
+    <div class="semantic-modal-content">
+      <header class="semantic-modal-header">
+        <div>
+          <span class="eyebrow-num">ARQUITECTURA DE WEB SEMÁNTICA · SCHEMA.ORG</span>
+          <h2 id="semanticModalTitle">Grafo Conectado JSON-LD (10 <code>@type</code> implementados)</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeSemanticModal" aria-label="Cerrar inspector semántico">✕</button>
+      </header>
+
+      <div class="semantic-modal-body">
+        <p class="semantic-intro">
+          El bloque <code>&lt;script type="application/ld+json"&gt;</code> está desacoplado de las animaciones visuales para garantizar que los motores de búsqueda y agentes semánticos extraigan las 20 referencias y 3 beneficios sin interferencias del DOM.
+        </p>
+
+        <!-- Tarjetas de los 10 @type utilizados -->
+        <div class="schema-types-grid" aria-label="Tipos de Schema.org implementados">
+          <div class="schema-type-chip">
+            <span class="type-idx">01</span>
+            <div>
+              <strong><code>Store</code></strong>
+              <span>Entidad raíz <em>Julimboo.store</em></span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">02</span>
+            <div>
+              <strong><code>SaleEvent</code></strong>
+              <span>Black Friday (27–30 Nov)</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">03</span>
+            <div>
+              <strong><code>OfferCatalog</code></strong>
+              <span>4 líneas comerciales anidadas</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">04</span>
+            <div>
+              <strong><code>Product</code></strong>
+              <span>20 modelos de iPhone</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">05</span>
+            <div>
+              <strong><code>Brand</code></strong>
+              <span>Marca fabricante (Apple)</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">06</span>
+            <div>
+              <strong><code>Offer</code></strong>
+              <span>Precios COP y condiciones</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">07</span>
+            <div>
+              <strong><code>ImageObject</code></strong>
+              <span>Activos visuales con caption</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">08</span>
+            <div>
+              <strong><code>ItemList</code></strong>
+              <span>Lista de 3 regalos incluidos</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">09</span>
+            <div>
+              <strong><code>ListItem</code></strong>
+              <span>Cargador, Forro y Vidrio</span>
+            </div>
+          </div>
+          <div class="schema-type-chip">
+            <span class="type-idx">10</span>
+            <div>
+              <strong><code>ContactPoint</code> / <code>WarrantyPromise</code></strong>
+              <span>Canal @julimboo.store y garantía</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jsonld-toolbar">
+          <span>Vista en vivo de <code>#julimboo-jsonld</code></span>
+          <button type="button" class="copy-json-btn" id="copyJsonLdBtn">Copiar JSON-LD para Validador</button>
+        </div>
+        <pre class="jsonld-code-Block"><code id="jsonLdViewer"></code></pre>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Librerías del Enfoque Híbrido: Lenis (Inercia suave) + Swiper.js (Carrusel) -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
