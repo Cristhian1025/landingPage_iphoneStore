@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Acto 3 (Nuevo iPhone 18): Máscara circular clip-path: circle(...)
     if (iphone18Section) {
       const p18 = getSectionEntryProgress(iphone18Section);
-      const radiusPercent = Math.round(22 + p18 * 58); // de 22% a 80%
+      const radiusPercent = Math.round(32 + p18 * 68); // de 32% a 100%
       rootStyle.setProperty('--ip18-radius', `${radiusPercent}%`);
     }
 
@@ -168,16 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------------
      3. HOVERS MODERNOS: CURSOR RADIAL SPOTLIGHT & BOTONES MAGNÉTICOS
      ------------------------------------------------------------------------ */
-  const spotlightCards = document.querySelectorAll('.spotlight-card');
-
-  spotlightCards.forEach((card) => {
-    card.addEventListener('pointermove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
+  document.addEventListener('pointermove', (e) => {
+    const card = e.target.closest('.spotlight-card');
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
   });
 
   if (!prefersReducedMotion) {
@@ -263,13 +259,23 @@ document.addEventListener('DOMContentLoaded', () => {
      5. CARRUSEL SWIPER.JS + FILTRO DE CAPACIDADES (ACTO 3 · NUEVO iPHONE 18)
      ------------------------------------------------------------------------ */
   let iphone18Swiper = null;
+  const capacityTabs = document.querySelectorAll('.capacity-tab');
+  const ip18SlideTemplates = Array.from(
+    document.querySelectorAll('#iphone18Swiper .swiper-slide')
+  ).map((slide) => ({
+    capacity: slide.dataset.capacity,
+    html: slide.outerHTML,
+  }));
 
   if (typeof window.Swiper !== 'undefined') {
     iphone18Swiper = new window.Swiper('#iphone18Swiper', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      speed: 650,
+      slidesPerView: 1.08,
+      spaceBetween: 18,
+      speed: 600,
       grabCursor: true,
+      observer: true,
+      observeParents: true,
+      watchOverflow: true,
       keyboard: { enabled: true },
       pagination: {
         el: '#iphone18Pagination',
@@ -280,18 +286,19 @@ document.addEventListener('DOMContentLoaded', () => {
         prevEl: '#iphone18Prev',
       },
       breakpoints: {
-        720: {
-          slidesPerView: 2,
+        640: {
+          slidesPerView: 1.45,
+          spaceBetween: 20,
+        },
+        1100: {
+          slidesPerView: 1.65,
           spaceBetween: 22,
         },
       },
     });
   }
 
-  // Selector de capacidades (Todas / 256GB / 512GB) para Nuevo iPhone 18
-  const capacityTabs = document.querySelectorAll('.capacity-tab');
-  const allIp18Slides = Array.from(document.querySelectorAll('#iphone18Swiper .swiper-slide'));
-
+  // Selector de capacidades (Todas / 256GB / 512GB) reconstruyendo slides limpios
   capacityTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const filter = tab.dataset.ip18Filter;
@@ -302,14 +309,18 @@ document.addEventListener('DOMContentLoaded', () => {
         t.setAttribute('aria-selected', String(isCurrent));
       });
 
-      allIp18Slides.forEach((slide) => {
-        const match = filter === 'all' || slide.dataset.capacity === filter;
-        slide.style.display = match ? '' : 'none';
-      });
+      const matchingHtml = ip18SlideTemplates
+        .filter((item) => filter === 'all' || item.capacity === filter)
+        .map((item) => item.html);
 
       if (iphone18Swiper) {
+        iphone18Swiper.removeAllSlides();
+        iphone18Swiper.appendSlide(matchingHtml);
         iphone18Swiper.update();
-        iphone18Swiper.slideTo(0, 450);
+        iphone18Swiper.slideTo(0, 0);
+      } else {
+        const wrapper = document.querySelector('#iphone18Swiper .swiper-wrapper');
+        if (wrapper) wrapper.innerHTML = matchingHtml.join('');
       }
     });
   });
