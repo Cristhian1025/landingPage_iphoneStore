@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const rootStyle = document.documentElement.style;
 
   /* ------------------------------------------------------------------------
-     1. INERCIA SUAVE CON LENIS + NAVEGACIÓN POR ANCLAS
+     1. INERCIA SUAVE CON LENIS + NAVEGACIÓN ULTRA-SUAVE POR ANCLAS
      ------------------------------------------------------------------------ */
   let lenis = null;
 
   if (typeof window.Lenis !== 'undefined' && !prefersReducedMotion) {
     lenis = new window.Lenis({
-      duration: 1.15,
+      duration: 1.35,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.95,
+      wheelMultiplier: 0.9,
       touchMultiplier: 1.5,
     });
 
@@ -37,7 +37,66 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(raf);
   }
 
-  // Enlaces ancla suaves sincronizados con Lenis
+  // Curva cinematográfica easeInOutQuart (arranque suave + frenado con inercia)
+  const easeInOutQuart = (t) =>
+    t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+
+  let activeScrollAnimId = null;
+
+  function smoothScrollToElement(targetEl) {
+    const headerOffset = 76;
+    const startY = window.scrollY || window.pageYOffset;
+    const targetY = Math.max(0, targetEl.getBoundingClientRect().top + startY - headerOffset);
+    const distance = Math.abs(targetY - startY);
+
+    // Duración proporcional a la distancia: entre 0.95s y 1.65s
+    const durationSec = Math.min(1.65, Math.max(0.95, distance / 1800));
+
+    if (lenis) {
+      lenis.scrollTo(targetEl, {
+        offset: -headerOffset,
+        duration: durationSec,
+        easing: easeInOutQuart,
+      });
+      return;
+    }
+
+    // Respaldo con inercia real vía requestAnimationFrame (nunca salta de golpe)
+    if (activeScrollAnimId) cancelAnimationFrame(activeScrollAnimId);
+
+    const durationMs = durationSec * 1000;
+    const startTime = performance.now();
+
+    const cancelOnUserInput = () => {
+      if (activeScrollAnimId) {
+        cancelAnimationFrame(activeScrollAnimId);
+        activeScrollAnimId = null;
+      }
+      window.removeEventListener('wheel', cancelOnUserInput);
+      window.removeEventListener('touchstart', cancelOnUserInput);
+    };
+    window.addEventListener('wheel', cancelOnUserInput, { passive: true, once: true });
+    window.addEventListener('touchstart', cancelOnUserInput, { passive: true, once: true });
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / durationMs);
+      const eased = easeInOutQuart(progress);
+      window.scrollTo(0, startY + (targetY - startY) * eased);
+
+      if (progress < 1) {
+        activeScrollAnimId = requestAnimationFrame(step);
+      } else {
+        activeScrollAnimId = null;
+        window.removeEventListener('wheel', cancelOnUserInput);
+        window.removeEventListener('touchstart', cancelOnUserInput);
+      }
+    }
+
+    activeScrollAnimId = requestAnimationFrame(step);
+  }
+
+  // Enlaces ancla ultra-suaves (header, botones Hero y barra rápida de líneas)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
@@ -46,11 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!targetEl) return;
 
       e.preventDefault();
-      if (lenis) {
-        lenis.scrollTo(targetEl, { offset: -72, duration: 1.2 });
-      } else {
-        targetEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-      }
+      smoothScrollToElement(targetEl);
     });
   });
 
