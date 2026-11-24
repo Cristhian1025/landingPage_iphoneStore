@@ -83,34 +83,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Barra de progreso global
     rootStyle.setProperty('--scroll-progress', globalProgress.toFixed(4));
 
-    if (prefersReducedMotion) return;
+    if (!prefersReducedMotion) {
+      // 2. Paralaje suave en el Hero
+      if (scrollY < window.innerHeight * 1.2) {
+        const parallaxPx = Math.round(scrollY * 0.08);
+        rootStyle.setProperty('--hero-parallax', `${parallaxPx}px`);
+      }
 
-    // 2. Paralaje suave en el Hero
-    if (scrollY < window.innerHeight * 1.2) {
-      const parallaxPx = Math.round(scrollY * 0.08);
-      rootStyle.setProperty('--hero-parallax', `${parallaxPx}px`);
+      // 3. Acto 2 (Nuevos Sellados): Revelado clip-path inset progresivo
+      if (nuevosSection) {
+        const pNuevos = clamp(0.25 + getSectionEntryProgress(nuevosSection) * 0.75, 0.25, 1);
+        rootStyle.setProperty('--nuevos-reveal', pNuevos.toFixed(3));
+      }
+
+      // 4. Acto 3 (Nuevo iPhone 18): Máscara circular clip-path: circle(...)
+      if (iphone18Section) {
+        const p18 = getSectionEntryProgress(iphone18Section);
+        const radiusPercent = Math.round(32 + p18 * 68); // de 32% a 100%
+        rootStyle.setProperty('--ip18-radius', `${radiusPercent}%`);
+      }
+
+      // 6. Acto 5 (Open Box): Revelado vertical clip-path
+      if (openBoxSection) {
+        const pOb = clamp(0.2 + getSectionEntryProgress(openBoxSection) * 0.8, 0.2, 1);
+        rootStyle.setProperty('--ob-reveal', pOb.toFixed(3));
+      }
     }
 
-    // 3. Acto 2 (Nuevos Sellados): Revelado clip-path inset progresivo
-    if (nuevosSection) {
-      const pNuevos = clamp(0.25 + getSectionEntryProgress(nuevosSection) * 0.75, 0.25, 1);
-      rootStyle.setProperty('--nuevos-reveal', pNuevos.toFixed(3));
-    }
-
-    // 4. Acto 3 (Nuevo iPhone 18): Máscara circular clip-path: circle(...)
-    if (iphone18Section) {
-      const p18 = getSectionEntryProgress(iphone18Section);
-      const radiusPercent = Math.round(32 + p18 * 68); // de 32% a 100%
-      rootStyle.setProperty('--ip18-radius', `${radiusPercent}%`);
-    }
-
-    // 6. Acto 5 (Open Box): Revelado vertical clip-path
-    if (openBoxSection) {
-      const pOb = clamp(0.2 + getSectionEntryProgress(openBoxSection) * 0.8, 0.2, 1);
-      rootStyle.setProperty('--ob-reveal', pOb.toFixed(3));
-    }
-
-    // 7. Scroll-Spy para iluminar la sección activa en la barra superior
+    // 7. Scroll-Spy para iluminar la sección activa en la barra superior (siempre activo)
     const sections = ['nuevos-sellados', 'iphone-18', 'linea-duo', 'open-box', 'beneficios'];
     let currentSectionId = '';
     for (const id of sections) {
@@ -133,6 +133,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateScrollLinkedEffects, { passive: true });
   }
   updateScrollLinkedEffects();
+
+  // Revelado dinámico por máscara clip-path en titulares al entrar en pantalla
+  const maskedTitles = document.querySelectorAll('.mask-title-reveal, .mask-horizontal-reveal');
+  if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+    maskedTitles.forEach((el) => el.classList.add('is-revealed'));
+  } else {
+    const titleMaskObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    maskedTitles.forEach((el) => titleMaskObserver.observe(el));
+  }
 
   /* ------------------------------------------------------------------------
      3. HOVERS MODERNOS: CURSOR RADIAL SPOTLIGHT & BOTONES MAGNÉTICOS
@@ -281,6 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const matchingHtml = ip18SlideTemplates
         .filter((item) => filter === 'all' || item.capacity === filter)
         .map((item) => item.html);
+
+      const swiperEl = document.getElementById('iphone18Swiper');
+      if (swiperEl) swiperEl.scrollLeft = 0;
 
       if (iphone18Swiper) {
         iphone18Swiper.removeAllSlides();

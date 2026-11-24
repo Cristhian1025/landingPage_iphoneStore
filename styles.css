@@ -753,22 +753,42 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
 
 .sticky-visual-box img {
   width: 100%;
-  max-height: 430px;
+  max-height: clamp(240px, 38vh, 400px);
   object-fit: contain;
   margin-inline: auto;
   transition: transform 0.55s var(--ease-out-expo), opacity 0.35s ease;
 }
 
-/* Máscara progresiva Acto 2 */
+/* Máscara progresiva Acto 2 (sin transition en clip-path para 60fps con Lenis) */
 .scroll-mask-inset {
   clip-path: inset(calc((1 - var(--nuevos-reveal, 1)) * 65%) 0 0 0 round 28px);
-  transition: clip-path 0.25s linear;
+  will-change: clip-path;
 }
 
 /* Máscara vertical Acto 5 */
 .scroll-mask-vertical {
   clip-path: inset(calc((1 - var(--ob-reveal, 1)) * 70%) 0 0 0 round 28px);
-  transition: clip-path 0.25s linear;
+  will-change: clip-path;
+}
+
+/* Máscaras dinámicas en titulares (Actos 2, 3, 4, 5 y 6) */
+.mask-title-reveal,
+.mask-horizontal-reveal {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0.25;
+  transform: translateY(14px);
+  transition:
+    clip-path 0.9s var(--ease-out-expo),
+    opacity 0.7s ease,
+    transform 0.9s var(--ease-out-expo);
+  will-change: clip-path, transform;
+}
+
+.mask-title-reveal.is-revealed,
+.mask-horizontal-reveal.is-revealed {
+  clip-path: inset(0 0% 0 0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .sticky-visual-caption {
@@ -978,9 +998,9 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   background: #000000;
   border: 1px solid rgba(225, 29, 72, 0.35);
   overflow: hidden;
-  /* Máscara circular dinámica vinculada al scroll */
+  /* Máscara circular dinámica vinculada al scroll (sin transition para 60fps con Lenis) */
   clip-path: circle(var(--ip18-radius, 100%) at 50% 50%);
-  transition: clip-path 0.25s ease-out;
+  will-change: clip-path;
   box-shadow: 0 30px 70px -20px rgba(225, 29, 72, 0.3);
 }
 
@@ -1042,7 +1062,7 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
 .iphone18-swiper {
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: clip;
   padding: 0.5rem 0.15rem 1.25rem;
 }
 
@@ -1866,10 +1886,13 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
 
   .mask-curtain-inner,
   .mask-hero-reveal,
+  .mask-title-reveal,
+  .mask-horizontal-reveal,
   .scroll-mask-inset,
   .scroll-mask-vertical,
   .circle-mask-stage {
     clip-path: none !important;
     transform: none !important;
+    opacity: 1 !important;
   }
 }
