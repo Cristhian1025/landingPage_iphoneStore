@@ -8,7 +8,7 @@
  * 4. Hovers modernos (Cursor Radial Spotlight + Botones Magnéticos)
  * 5. Carrusel Swiper.js con filtrado de capacidades (Nuevo iPhone 18)
  * 6. Filtrado interactivo Open Box (9 referencias · Baterías 100%)
- * 7. Inspector en vivo del Grafo de Web Semántica (JSON-LD · 10 @type)
+ * 7. Visor 3D del iPhone Dúo (apertura/cierre + giro 360° por arrastre)
  * ==========================================================================
  */
 
@@ -59,13 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const nuevosSection = document.getElementById('nuevos-sellados');
   const iphone18Section = document.getElementById('iphone-18');
-  const duoSection = document.getElementById('linea-duo');
   const openBoxSection = document.getElementById('open-box');
-  const duoFoldSlider = document.getElementById('duoFoldSlider');
-  const duoPercentLabel = document.getElementById('duoPercentLabel');
   const navLinks = document.querySelectorAll('.nav-link[data-section]');
-
-  let userAdjustedDuoSlider = false;
 
   // Función utilitaria para normalizar progreso entre 0 y 1
   const clamp = (val, min = 0, max = 1) => Math.min(max, Math.max(min, val));
@@ -109,20 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
       rootStyle.setProperty('--ip18-radius', `${radiusPercent}%`);
     }
 
-    // 5. Acto 4 (Línea Dúo Plegable): Apertura horizontal simétrica desde el centro
-    if (duoSection && !userAdjustedDuoSlider) {
-      const pDuo = getSectionEntryProgress(duoSection);
-      // Cuando pDuo = 0 -> inset lateral de 42% (plegado); cuando pDuo = 1 -> inset 0% (100% desplegado)
-      const insetSide = Math.round((1 - pDuo) * 42);
-      const openPercent = Math.round(15 + pDuo * 85);
-      rootStyle.setProperty('--duo-inset', `${insetSide}%`);
-
-      if (duoFoldSlider && duoPercentLabel) {
-        duoFoldSlider.value = String(openPercent);
-        duoPercentLabel.textContent = `${openPercent}%`;
-      }
-    }
-
     // 6. Acto 5 (Open Box): Revelado vertical clip-path
     if (openBoxSection) {
       const pOb = clamp(0.2 + getSectionEntryProgress(openBoxSection) * 0.8, 0.2, 1);
@@ -143,18 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     navLinks.forEach((link) => {
       link.classList.toggle('active', link.dataset.section === currentSectionId);
-    });
-  }
-
-  // Control manual del pliegue de máscara en Acto 4 (iPhone Dúo)
-  if (duoFoldSlider && duoPercentLabel) {
-    duoFoldSlider.addEventListener('input', (e) => {
-      userAdjustedDuoSlider = true;
-      const val = Number(e.target.value); // 15 a 100
-      const normalized = (val - 15) / 85;
-      const insetSide = Math.round((1 - normalized) * 42);
-      rootStyle.setProperty('--duo-inset', `${insetSide}%`);
-      duoPercentLabel.textContent = `${val}%`;
     });
   }
 
@@ -343,72 +312,155 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
   /* ------------------------------------------------------------------------
-     7. INSPECTOR EN VIVO DE WEB SEMÁNTICA (JSON-LD · 10 @TYPE DE SCHEMA.ORG)
+     7. VISOR 3D DEL iPHONE DÚO
+        - Animación automática de apertura/cierre (bisagra CSS 3D)
+        - Giro 360° arrastrando con mouse o dedo (Pointer Events + inercia)
+        - Slider manual de apertura y botón pausar/reproducir
      ------------------------------------------------------------------------ */
-  const semanticModal = document.getElementById('semanticModal');
-  const openModalBtn = document.getElementById('openSemanticModal');
-  const openModalFooterBtn = document.getElementById('openSemanticModalFooter');
-  const closeModalBtn = document.getElementById('closeSemanticModal');
-  const jsonLdScript = document.getElementById('julimboo-jsonld');
-  const jsonLdViewer = document.getElementById('jsonLdViewer');
-  const copyJsonBtn = document.getElementById('copyJsonLdBtn');
+  const duoStage = document.getElementById('duoStage');
+  const duoPhone = document.getElementById('duoPhone');
+  const duoHinge = document.getElementById('duoHinge');
+  const duoSlider = document.getElementById('duoFoldSlider');
+  const duoLabel = document.getElementById('duoPercentLabel');
+  const duoPlayBtn = document.getElementById('duoPlayBtn');
 
-  if (jsonLdScript && jsonLdViewer) {
-    try {
-      const parsed = JSON.parse(jsonLdScript.textContent);
-      jsonLdViewer.textContent = JSON.stringify(parsed, null, 2);
-    } catch {
-      jsonLdViewer.textContent = jsonLdScript.textContent.trim();
-    }
-  }
+  if (duoStage && duoPhone && duoHinge) {
+    const state = {
+      rotY: -20,          // giro horizontal (libre, 360°)
+      rotX: -8,           // inclinación vertical (limitada)
+      velY: 0,
+      open: 1,            // 0 = cerrado, 1 = abierto
+      autoplay: !prefersReducedMotion,
+      inView: false,
+      dragging: false,
+      lastX: 0,
+      lastY: 0,
+      lastT: 0,
+      autoTime: 0,
+    };
 
-  function openSemanticDialog() {
-    if (!semanticModal) return;
-    if (typeof semanticModal.showModal === 'function') {
-      semanticModal.showModal();
-    } else {
-      semanticModal.setAttribute('open', '');
-    }
-  }
+    const renderDuo = () => {
+      const fold = (1 - state.open) * 178; // 178° para que no se toquen las pantallas internas
+      // Recentrar: abierto el centro está en la bisagra; cerrado, en medio de la hoja fija
+      const shift = -0.5 * (1 - Math.cos((fold * Math.PI) / 180)) / 2;
+      duoPhone.style.transform = `rotateX(${state.rotX}deg) rotateY(${state.rotY}deg) translateX(calc(var(--leaf-w) * ${shift.toFixed(4)}))`;
+      duoHinge.style.setProperty('--duo-fold', `${fold}deg`);
+      duoStage.style.setProperty('--duo-shade', (1 - state.open) * 0.55);
+      const pct = Math.round(state.open * 100);
+      if (duoSlider) duoSlider.value = String(pct);
+      if (duoLabel) duoLabel.textContent = `${pct}%`;
+    };
 
-  function closeSemanticDialog() {
-    if (!semanticModal) return;
-    if (typeof semanticModal.close === 'function') {
-      semanticModal.close();
-    } else {
-      semanticModal.removeAttribute('open');
-    }
-  }
+    const setAutoplay = (on) => {
+      state.autoplay = on;
+      if (duoPlayBtn) {
+        duoPlayBtn.textContent = on ? 'Pausar animación' : 'Reproducir animación';
+        duoPlayBtn.setAttribute('aria-pressed', String(on));
+      }
+    };
+    setAutoplay(state.autoplay);
 
-  if (openModalBtn) openModalBtn.addEventListener('click', openSemanticDialog);
-  if (openModalFooterBtn) openModalFooterBtn.addEventListener('click', openSemanticDialog);
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeSemanticDialog);
+    let prevT = performance.now();
+    const loop = (t) => {
+      const dt = Math.min(0.05, (t - prevT) / 1000);
+      prevT = t;
+      if (state.inView && !state.dragging) {
+        if (state.autoplay) {
+          // Ciclo de 6 s: abierto → cerrado → abierto, con giro lento
+          state.autoTime += dt;
+          const wave = (Math.cos((state.autoTime / 6) * Math.PI * 2) + 1) / 2;
+          state.open = 0.04 + wave * 0.96;
+          state.rotY += 14 * dt;
+        }
+        // Inercia después de soltar el arrastre
+        if (Math.abs(state.velY) > 0.5) {
+          state.rotY += state.velY * dt;
+          state.velY *= Math.pow(0.04, dt);
+        } else {
+          state.velY = 0;
+        }
+        renderDuo();
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
 
-  if (semanticModal) {
-    semanticModal.addEventListener('click', (e) => {
-      const rect = semanticModal.getBoundingClientRect();
-      const clickedOutside =
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom;
-      if (clickedOutside) closeSemanticDialog();
+    // Solo animar cuando la sección está en pantalla
+    new IntersectionObserver(
+      ([entry]) => { state.inView = entry.isIntersecting; },
+      { threshold: 0.15 }
+    ).observe(duoStage);
+
+    // Arrastre para girar
+    duoStage.addEventListener('pointerdown', (e) => {
+      state.dragging = true;
+      state.lastX = e.clientX;
+      state.lastY = e.clientY;
+      state.lastT = performance.now();
+      state.velY = 0;
+      setAutoplay(false);
+      duoStage.setPointerCapture(e.pointerId);
+      duoStage.classList.add('is-dragging');
     });
-  }
 
-  if (copyJsonBtn && jsonLdViewer) {
-    copyJsonBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(jsonLdViewer.textContent);
-        const originalText = copyJsonBtn.textContent;
-        copyJsonBtn.textContent = '✓ ¡JSON-LD Copiado al Portapapeles!';
-        setTimeout(() => {
-          copyJsonBtn.textContent = originalText;
-        }, 2200);
-      } catch {
-        copyJsonBtn.textContent = 'Selecciona el texto abajo para copiar';
+    duoStage.addEventListener('pointermove', (e) => {
+      if (!state.dragging) return;
+      const now = performance.now();
+      const dx = e.clientX - state.lastX;
+      const dy = e.clientY - state.lastY;
+      state.rotY += dx * 0.6;
+      if (e.pointerType === 'mouse') {
+        state.rotX = Math.max(-45, Math.min(45, state.rotX - dy * 0.4));
+      }
+      const elapsed = Math.max(1, now - state.lastT);
+      state.velY = (dx * 0.6) / (elapsed / 1000);
+      state.lastX = e.clientX;
+      state.lastY = e.clientY;
+      state.lastT = now;
+      renderDuo();
+    });
+
+    const endDrag = () => {
+      if (!state.dragging) return;
+      state.dragging = false;
+      duoStage.classList.remove('is-dragging');
+      if (performance.now() - state.lastT > 80) state.velY = 0;
+      state.velY = Math.max(-900, Math.min(900, state.velY));
+    };
+    duoStage.addEventListener('pointerup', endDrag);
+    duoStage.addEventListener('pointercancel', endDrag);
+
+    // Teclado: flechas giran, accesible con tabindex
+    duoStage.tabIndex = 0;
+    duoStage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        setAutoplay(false);
+        state.rotY += e.key === 'ArrowLeft' ? -15 : 15;
+        renderDuo();
       }
     });
+
+    if (duoSlider) {
+      duoSlider.addEventListener('input', (e) => {
+        setAutoplay(false);
+        state.open = Number(e.target.value) / 100;
+        renderDuo();
+      });
+    }
+
+    if (duoPlayBtn) {
+      duoPlayBtn.addEventListener('click', () => {
+        if (!state.autoplay) {
+          // Retoma el ciclo desde el estado de apertura actual
+          state.autoTime = (Math.acos(Math.max(-1, Math.min(1, ((state.open - 0.04) / 0.96) * 2 - 1))) / (Math.PI * 2)) * 6;
+        }
+        setAutoplay(!state.autoplay);
+      });
+    }
+
+    renderDuo();
   }
 });

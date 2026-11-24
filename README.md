@@ -19,7 +19,7 @@ Landing page narrativa de alto impacto para la campaña **Black Friday (27–30 
 
 ## 2. Arquitectura de Web Semántica (12 `@type` en Schema.org / JSON-LD)
 
-El bloque `<script type="application/ld+json" id="julimboo-jsonld">` se encuentra desacoplado de las animaciones del DOM e implementa un grafo conectado con **12 tipos de Schema.org** (superando el requisito mínimo de 7 `@type`), además de contar con un **Inspector JSON-LD en vivo** dentro de la interfaz:
+El bloque `<script type="application/ld+json" id="julimboo-jsonld">` se encuentra desacoplado de las animaciones del DOM e implementa un grafo conectado con **12 tipos de Schema.org** (superando el requisito mínimo de 7 `@type`). El bloque no se muestra en la interfaz: lo leen los motores de búsqueda (se puede validar en https://validator.schema.org):
 
 1. **`Store`**: Entidad raíz de **Julimboo.store** (`name`, `slogan`, `currenciesAccepted: "COP"`, `sameAs`, `hasOfferCatalog`, `event`, `subjectOf`).
 2. **`SaleEvent`**: Campaña promocional **Black Friday · 27 al 30 de noviembre** (`startDate: "2026-11-27"`, `endDate: "2026-11-30"`, `organizer`).
@@ -38,7 +38,7 @@ El bloque `<script type="application/ld+json" id="julimboo-jsonld">` se encuentr
 ## 3. Estructura del Proyecto
 
 ```text
-├── index.html          # Estructura HTML5 semántica + Grafo JSON-LD + Inspector interactivo
+├── index.html          # Estructura HTML5 semántica + Grafo JSON-LD + Visor 3D iPhone Dúo
 ├── styles.css          # Sistema de diseño oscuro, sticky scrollytelling, clip-path y spotlight hovers
 ├── app.js              # Integración de Lenis, Swiper.js, motor de máscaras scroll-linked y filtros
 ├── Source/imgs/        # Fotografías de equipos (.webp y .jpg) e iconos de accesorios incluidos

@@ -654,10 +654,6 @@
       </nav>
 
       <div class="nav-actions">
-        <button type="button" class="semantic-badge-btn" id="openSemanticModal" aria-haspopup="dialog" aria-controls="semanticModal" title="Explorar grafo JSON-LD de Web Semántica">
-          <span class="code-icon" aria-hidden="true">{ }</span>
-          <span>10 <code>@type</code> Schema</span>
-        </button>
         <a href="https://www.instagram.com/julimboo.store/" target="_blank" rel="noopener noreferrer" class="nav-cta magnetic-btn">
           <span>@julimboo.store</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -1240,27 +1236,39 @@
           </p>
         </div>
 
-        <!-- Escenario de apertura horizontal simétrica (clip-path) -->
+        <!-- Visor 3D interactivo: el iPhone Dúo se abre/cierra y gira 360° -->
         <div class="duo-unfold-experience">
           <div class="unfold-meter-bar">
-            <span>Apertura de máscara plegable (<code id="duoPercentLabel">100%</code>)</span>
+            <span>Apertura: <code id="duoPercentLabel">100%</code></span>
             <label class="unfold-slider-label">
-              <span>Probar pliegue:</span>
-              <input type="range" id="duoFoldSlider" min="15" max="100" value="100" aria-label="Control manual de apertura de máscara del iPhone Dúo" />
+              <span>Abrir / cerrar:</span>
+              <input type="range" id="duoFoldSlider" min="0" max="100" value="100" aria-label="Controlar la apertura del iPhone Dúo" />
             </label>
+            <button type="button" class="duo3d-play-btn" id="duoPlayBtn" aria-pressed="true">Pausar animación</button>
           </div>
 
-          <figure class="duo-mask-viewport" id="duoMaskStage">
-            <picture>
-              <source srcset="./Source/imgs/iphone_duo.webp" type="image/webp" />
-              <img
-                src="./Source/imgs/iphone_duo.jpg"
-                alt="iPhone Dúo desplegado mostrando su pantalla interior panorámica"
-                loading="lazy"
-                width="900"
-                height="980"
-              />
-            </picture>
+          <figure class="duo3d-stage" id="duoStage" role="img" aria-label="Modelo 3D del iPhone Dúo plegable. Arrastra para girarlo 360 grados.">
+            <div class="duo3d-phone" id="duoPhone">
+              <!-- Hoja derecha (fija): mitad derecha de la pantalla interior + tapa trasera con cámaras -->
+              <div class="duo3d-leaf duo3d-leaf--right">
+                <div class="duo3d-face duo3d-face--front duo3d-inner-right"></div>
+                <div class="duo3d-face duo3d-face--back duo3d-back"></div>
+                <div class="duo3d-edge duo3d-edge--top"></div>
+                <div class="duo3d-edge duo3d-edge--bottom"></div>
+                <div class="duo3d-edge duo3d-edge--outer"></div>
+              </div>
+              <!-- Hoja izquierda (bisagra): mitad izquierda de la pantalla interior + pantalla exterior -->
+              <div class="duo3d-hinge" id="duoHinge">
+                <div class="duo3d-leaf duo3d-leaf--left">
+                  <div class="duo3d-face duo3d-face--front duo3d-inner-left"><span class="duo3d-shade"></span></div>
+                  <div class="duo3d-face duo3d-face--back duo3d-cover"></div>
+                  <div class="duo3d-edge duo3d-edge--top"></div>
+                  <div class="duo3d-edge duo3d-edge--bottom"></div>
+                  <div class="duo3d-edge duo3d-edge--outer"></div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="duo3d-hint">↔ Arrastra para girar 360°</figcaption>
           </figure>
 
           <!-- Tarjetas laterales de precios iPhone Dúo -->
@@ -1669,9 +1677,6 @@
                 <span>Ir a @julimboo.store</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
               </a>
-              <button type="button" class="btn-secondary" id="openSemanticModalFooter">
-                <span>Inspeccionar JSON-LD (10 @types)</span>
-              </button>
             </div>
           </div>
         </div>
@@ -1689,112 +1694,10 @@
         <span>«Tecnología que te conecta» · Black Friday 27–30 de noviembre</span>
       </div>
       <div class="footer-meta">
-        <span>Arquitectura Híbrida: Lenis + Scroll-Linked CSS + Sticky Pinning + Dynamic Masking + Schema.org JSON-LD</span>
+        <span>© 2026 Julimboo.store · Todos los derechos reservados</span>
       </div>
     </div>
   </footer>
-
-  <!-- ========================================================================
-       MODAL / INSPECTOR INTERACTIVO DE WEB SEMÁNTICA (JSON-LD)
-       Permite verificar visualmente los 10 @type y el grafo de entidades
-       ======================================================================== -->
-  <dialog class="semantic-modal" id="semanticModal" aria-labelledby="semanticModalTitle">
-    <div class="semantic-modal-content">
-      <header class="semantic-modal-header">
-        <div>
-          <span class="eyebrow-num">ARQUITECTURA DE WEB SEMÁNTICA · SCHEMA.ORG</span>
-          <h2 id="semanticModalTitle">Grafo Conectado JSON-LD (10 <code>@type</code> implementados)</h2>
-        </div>
-        <button type="button" class="modal-close-btn" id="closeSemanticModal" aria-label="Cerrar inspector semántico">✕</button>
-      </header>
-
-      <div class="semantic-modal-body">
-        <p class="semantic-intro">
-          El bloque <code>&lt;script type="application/ld+json"&gt;</code> está desacoplado de las animaciones visuales para garantizar que los motores de búsqueda y agentes semánticos extraigan las 20 referencias y 3 beneficios sin interferencias del DOM.
-        </p>
-
-        <!-- Tarjetas de los 10 @type utilizados -->
-        <div class="schema-types-grid" aria-label="Tipos de Schema.org implementados">
-          <div class="schema-type-chip">
-            <span class="type-idx">01</span>
-            <div>
-              <strong><code>Store</code></strong>
-              <span>Entidad raíz <em>Julimboo.store</em></span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">02</span>
-            <div>
-              <strong><code>SaleEvent</code></strong>
-              <span>Black Friday (27–30 Nov)</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">03</span>
-            <div>
-              <strong><code>OfferCatalog</code></strong>
-              <span>4 líneas comerciales anidadas</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">04</span>
-            <div>
-              <strong><code>Product</code></strong>
-              <span>20 modelos de iPhone</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">05</span>
-            <div>
-              <strong><code>Brand</code></strong>
-              <span>Marca fabricante (Apple)</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">06</span>
-            <div>
-              <strong><code>Offer</code></strong>
-              <span>Precios COP y condiciones</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">07</span>
-            <div>
-              <strong><code>ImageObject</code></strong>
-              <span>Activos visuales con caption</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">08</span>
-            <div>
-              <strong><code>ItemList</code></strong>
-              <span>Lista de 3 regalos incluidos</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">09</span>
-            <div>
-              <strong><code>ListItem</code></strong>
-              <span>Cargador, Forro y Vidrio</span>
-            </div>
-          </div>
-          <div class="schema-type-chip">
-            <span class="type-idx">10</span>
-            <div>
-              <strong><code>ContactPoint</code> / <code>WarrantyPromise</code></strong>
-              <span>Canal @julimboo.store y garantía</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="jsonld-toolbar">
-          <span>Vista en vivo de <code>#julimboo-jsonld</code></span>
-          <button type="button" class="copy-json-btn" id="copyJsonLdBtn">Copiar JSON-LD para Validador</button>
-        </div>
-        <pre class="jsonld-code-Block"><code id="jsonLdViewer"></code></pre>
-      </div>
-    </div>
-  </dialog>
 
   <!-- Librerías del Enfoque Híbrido: Lenis (Inercia suave) + Swiper.js (Carrusel) -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>

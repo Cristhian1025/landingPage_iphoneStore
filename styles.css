@@ -41,7 +41,6 @@
   --hero-parallax: 0px;
   --nuevos-reveal: 1;
   --ip18-radius: 75%;
-  --duo-inset: 0%;
   --ob-reveal: 1;
 }
 
@@ -263,30 +262,6 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-}
-
-.semantic-badge-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.42rem 0.8rem;
-  border-radius: var(--radius-pill);
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #6ee7b7;
-  font-size: 0.78rem;
-  font-weight: 600;
-  transition: transform 0.25s var(--ease-out-expo), background 0.25s ease;
-}
-
-.semantic-badge-btn:hover {
-  background: rgba(16, 185, 129, 0.22);
-  transform: translateY(-2px);
-}
-
-.code-icon {
-  font-family: monospace;
-  font-weight: 700;
 }
 
 .nav-cta {
@@ -1304,23 +1279,214 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   cursor: pointer;
 }
 
-/* Máscara de apertura simétrica desde el centro: inset(0 X% 0 X%) */
-.duo-mask-viewport {
-  width: min(760px, 100%);
-  border-radius: var(--radius-lg);
-  background: #000000;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  overflow: clip;
-  clip-path: inset(0 var(--duo-inset, 0%) 0 var(--duo-inset, 0%) round 28px);
-  transition: clip-path 0.18s ease-out;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+/* Visor 3D del iPhone Dúo (CSS 3D transforms + bisagra) */
+.duo3d-play-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.duo-mask-viewport img {
-  width: 100%;
-  max-height: 520px;
-  object-fit: contain;
-  margin-inline: auto;
+.duo3d-play-btn:hover {
+  background: rgba(245, 158, 11, 0.22);
+}
+
+.duo3d-stage {
+  --leaf-h: 380px;
+  --leaf-w: calc(var(--leaf-h) * 0.703);
+  --leaf-t: 6px;
+  --leaf-r: calc(var(--leaf-h) * 0.09);
+  --duo-shade: 0;
+  position: relative;
+  width: min(760px, 100%);
+  height: 560px;
+  display: grid;
+  place-items: center;
+  perspective: 1800px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse 45% 7% at 50% 90%, rgba(0, 0, 0, 0.8), transparent 70%),
+    radial-gradient(circle at 50% 40%, rgba(245, 158, 11, 0.14), transparent 60%),
+    #000000;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  overflow: clip;
+}
+
+.duo3d-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.duo3d-stage:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.duo3d-phone {
+  position: relative;
+  width: 0;
+  height: var(--leaf-h);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* La bisagra está en x = 0: la hoja derecha ocupa [0, W] y la izquierda [-W, 0] */
+.duo3d-leaf {
+  position: absolute;
+  top: 0;
+  width: var(--leaf-w);
+  height: var(--leaf-h);
+  transform-style: preserve-3d;
+}
+
+.duo3d-leaf--right {
+  left: 0;
+}
+
+.duo3d-hinge {
+  --duo-fold: 0deg;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--leaf-w);
+  height: var(--leaf-h);
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
+  /* Pivote sobre la cara interior: la hoja izquierda se cierra encima de la derecha (pliegue tipo libro) */
+  transform: translateZ(calc(var(--leaf-t) / 2)) rotateY(var(--duo-fold));
+}
+
+.duo3d-leaf--left {
+  left: 0;
+  transform: translateZ(calc(var(--leaf-t) / -2));
+}
+
+.duo3d-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+.duo3d-face--front {
+  transform: translateZ(calc(var(--leaf-t) / 2));
+  background-image: url('./Source/imgs/duo_abierto.webp');
+  background-size: 200% 100%;
+}
+
+.duo3d-face--back {
+  transform: rotateY(180deg) translateZ(calc(var(--leaf-t) / 2));
+  background-size: 100% 100%;
+}
+
+/* Pantalla interior: una sola imagen repartida entre las dos hojas (sin pliegue visible) */
+.duo3d-inner-left {
+  background-position: 0 0;
+  border-radius: var(--leaf-r) 0 0 var(--leaf-r);
+}
+
+.duo3d-inner-right {
+  left: -1px; /* solapa 1px para ocultar la unión en la bisagra */
+  background-position: 100% 0;
+  border-radius: 0 var(--leaf-r) var(--leaf-r) 0;
+}
+
+.duo3d-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35));
+  opacity: var(--duo-shade);
+  pointer-events: none;
+}
+
+/* Tapa trasera blanca con módulo de cámaras (bisagra al lado derecho visto desde atrás) */
+.duo3d-back {
+  background-image: url('./Source/imgs/duo_trasera.webp');
+  border-radius: var(--leaf-r) 0 0 var(--leaf-r);
+}
+
+/* Pantalla exterior con cámara perforada (bisagra al lado izquierdo visto de frente) */
+.duo3d-cover {
+  background-image: url('./Source/imgs/duo_exterior.webp');
+  border-radius: 0 var(--leaf-r) var(--leaf-r) 0;
+}
+
+/* Cantos metálicos (grosor del equipo) */
+.duo3d-edge {
+  position: absolute;
+  background: linear-gradient(90deg, #b8b8bd, #fafafa 40%, #d1d1d6 70%, #f0f0f2);
+}
+
+.duo3d-edge--top,
+.duo3d-edge--bottom {
+  width: calc(100% - var(--leaf-r));
+  height: var(--leaf-t);
+  top: calc(50% - var(--leaf-t) / 2);
+}
+
+.duo3d-leaf--right .duo3d-edge--top,
+.duo3d-leaf--right .duo3d-edge--bottom {
+  left: 0;
+}
+
+.duo3d-leaf--left .duo3d-edge--top,
+.duo3d-leaf--left .duo3d-edge--bottom {
+  left: var(--leaf-r);
+}
+
+.duo3d-edge--top {
+  transform: rotateX(90deg) translateZ(calc(var(--leaf-h) / 2 - 1px));
+}
+
+.duo3d-edge--bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--leaf-h) / 2 - 1px));
+}
+
+.duo3d-edge--outer {
+  top: var(--leaf-r);
+  height: calc(100% - var(--leaf-r) * 2);
+  width: var(--leaf-t);
+  left: calc(50% - var(--leaf-t) / 2);
+  background: linear-gradient(180deg, #c7c7cc, #fafafa 30%, #e5e5ea 70%, #b8b8bd);
+}
+
+.duo3d-leaf--left .duo3d-edge--outer {
+  transform: rotateY(-90deg) translateZ(calc(var(--leaf-w) / 2));
+}
+
+.duo3d-leaf--right .duo3d-edge--outer {
+  transform: rotateY(90deg) translateZ(calc(var(--leaf-w) / 2));
+}
+
+.duo3d-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .duo3d-stage {
+    --leaf-h: 220px;
+    height: 420px;
+  }
 }
 
 .duo-cards-grid {
@@ -1651,133 +1817,6 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   color: var(--text-secondary);
 }
 
-/* Modal Inspector JSON-LD */
-.semantic-modal {
-  margin: auto;
-  width: min(920px, 94vw);
-  max-height: 88vh;
-  border-radius: var(--radius-lg);
-  background: #0b0b12;
-  color: var(--text-primary);
-  border: 1px solid var(--border-highlight);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
-  padding: 0;
-}
-
-.semantic-modal::backdrop {
-  background: rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(8px);
-}
-
-.semantic-modal-content {
-  display: flex;
-  flex-direction: column;
-  max-height: 88vh;
-}
-
-.semantic-modal-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.5rem 1.8rem;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.semantic-modal-header h2 {
-  font-size: 1.35rem;
-  margin-top: 0.25rem;
-}
-
-.modal-close-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.semantic-modal-body {
-  padding: 1.5rem 1.8rem;
-  overflow-y: auto;
-}
-
-.semantic-intro {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  margin-bottom: 1.25rem;
-}
-
-.schema-types-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.schema-type-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.75rem 0.9rem;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-}
-
-.type-idx {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.14);
-  padding: 0.25rem 0.45rem;
-  border-radius: 6px;
-}
-
-.schema-type-chip strong {
-  display: block;
-  font-size: 0.88rem;
-}
-
-.schema-type-chip span {
-  font-size: 0.76rem;
-  color: var(--text-secondary);
-}
-
-.jsonld-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-}
-
-.copy-json-btn {
-  padding: 0.4rem 0.9rem;
-  border-radius: var(--radius-pill);
-  background: var(--accent-crimson);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.78rem;
-}
-
-.jsonld-code-Block {
-  padding: 1.1rem;
-  border-radius: var(--radius-sm);
-  background: #050508;
-  border: 1px solid var(--border-subtle);
-  font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 0.78rem;
-  color: #a7f3d0;
-  max-height: 300px;
-  overflow: auto;
-  white-space: pre-wrap;
-}
-
 /* ==========================================================================
    RESPONSIVE DESIGN & ACCESIBILIDAD (PREFERS-REDUCED-MOTION)
    ========================================================================== */
@@ -1812,10 +1851,6 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   .final-cta-banner {
     padding: 1.8rem 1.4rem;
   }
-
-  .semantic-badge-btn span:last-child {
-    display: none;
-  }
 }
 
 /* Regla técnica obligatoria: respeto a prefers-reduced-motion */
@@ -1833,8 +1868,7 @@ h1, h2, h3, .brand-name, .bf-price, .bf-price-lg {
   .mask-hero-reveal,
   .scroll-mask-inset,
   .scroll-mask-vertical,
-  .circle-mask-stage,
-  .duo-mask-viewport {
+  .circle-mask-stage {
     clip-path: none !important;
     transform: none !important;
   }
